@@ -79,3 +79,33 @@ overall O(n) algorithm.
 =================================================
 
 """
+def has_pair_brute(nums, k):
+    n = len(nums)
+    for i in range(n):
+        for j in range(i + 1, n):
+            if abs(nums[i] - nums[j]) == k:
+                return True
+    return False
+
+def has_pair_fast(nums, k):
+    num_set = set(nums)
+    for x in nums:
+        if (x + k) in num_set or (x - k) in num_set:
+            return True
+    return False
+
+# Input Example 1
+nums1 = [1, 5, 3, 4, 2]
+k1 = 3
+print("Input Example 1:")
+print("Brute Force:", has_pair_brute(nums1, k1))
+print("Optimized:", has_pair_fast(nums1, k1))
+
+print()
+
+# Input Example 2
+nums2 = [8, 12, 16, 4, 0, 20]
+k2 = 9
+print("Input Example 2:")
+print("Brute Force:", has_pair_brute(nums2, k2))
+print("Optimized:", has_pair_fast(nums2, k2))
